@@ -5,7 +5,7 @@ class UserModel(banco.Model):
     table_name = 'usuarios'
 
     login = banco.Column(banco.String(40), primary_key = True)
-    senha = banco.Column(banco.String(40))
+    senha = banco.Column(banco.String(80))
     nome = banco.Column(banco.String(40))
     admin = banco.Column(banco.Boolean,default=False)
 

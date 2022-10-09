@@ -16,7 +16,7 @@ def generate_hash(pwd):
 def check_hash(pwd, hash):
     try:
         byte_pwd = pwd.encode('utf-8')
-        byte_hash = hash
+        byte_hash = hash.encode('utf-8')
         return bcrypt.checkpw(byte_pwd, byte_hash)
     except:
         print("Error checking hash")

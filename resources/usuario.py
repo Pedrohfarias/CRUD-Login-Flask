@@ -41,6 +41,7 @@ class User(Resource):
             dados['login'] = username
             #Aplicando Hash na senha
             dados['senha'] = hash.generate_hash(dados['senha'])
+            dados['senha'] =  dados['senha'].decode("utf-8", "ignore")
             user.update_user(**dados)
             user.save_user()
             return user.json(), 200
@@ -68,6 +69,9 @@ class UserRegister(Resource):
             return {'message':f"The login {dados['login']} already exists."}
         else:
             dados['senha'] = hash.generate_hash(dados['senha'])
+            dados['senha'] =  dados['senha'].decode("utf-8", "ignore")
+            print("\n\n\n dados senha:"+dados['senha']+"\n\n\n")
+
             user = UserModel(**dados)
             user.save_user()
             return {'message':'User created successfully.'},201
